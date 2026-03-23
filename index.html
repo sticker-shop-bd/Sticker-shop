@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    Hello, World!
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Sticker Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {font-family: Arial; background:#f2f2f2; margin:0;}
+h1 {background:#ff4d4d; color:white; padding:15px; text-align:center;}
+
+.grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+padding:10px;
+}
+
+.card {
+background:white;
+padding:10px;
+text-align:center;
+border-radius:10px;
+}
+
+button {
+background:red;
+color:white;
+border:none;
+padding:8px;
+margin-top:5px;
+}
+
+.cart {
+background:white;
+padding:10px;
+position:fixed;
+top:10px;
+right:10px;
+width:180px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎨 My Sticker Shop</h1>
+
+<div class="cart">
+<h3>Cart</h3>
+<ul id="cart"></ul>
+<p>Total ₹<span id="total">0</span></p>
+<button onclick="order()">Order</button>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://via.placeholder.com/150?text=Anime">
+<p>Anime Sticker ₹80</p>
+<button onclick="add('Anime',80)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/150?text=Meme">
+<p>Meme Sticker ₹60</p>
+<button onclick="add('Meme',60)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/150?text=Gaming">
+<p>Gaming Sticker ₹100</p>
+<button onclick="add('Gaming',100)">Add</button>
+</div>
+
+</div>
+
+<script>
+let total = 0;
+let items = [];
+
+function add(name,price){
+items.push(name);
+total += price;
+
+let li = document.createElement("li");
+li.innerText = name;
+document.getElementById("cart").appendChild(li);
+
+document.getElementById("total").innerText = total;
+}
+
+function order(){
+let text = "Order:\n" + items.join("\n") + "\nTotal ₹" + total;
+let phone = "918240459738";
+
+window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(text));
+}
+</script>
+
+</body>
+</html>
